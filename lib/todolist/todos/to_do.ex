@@ -12,7 +12,7 @@ defmodule Todolist.ToDo do
   @doc false
   def changeset(attrs, to_do \\ %__MODULE__{}) do
     to_do
-    |> cast(attrs, [:title])
-    |> validate_required([:title])
+    |> cast(attrs, [:title, :is_done])
+    |> validate_required([:title, :is_done])
   end
 end
