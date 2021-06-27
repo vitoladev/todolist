@@ -13,16 +13,11 @@ defmodule TodolistWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", TodolistWeb do
-    pipe_through :browser
+  scope "/api", TodolistWeb do
+    pipe_through :api
 
-    get "/", PageController, :index
+    post "/todo", TodoController, :create
   end
-
-  # Other scopes may use custom stacks.
-  # scope "/api", TodolistWeb do
-  #   pipe_through :api
-  # end
 
   # Enables LiveDashboard only for development
   #
