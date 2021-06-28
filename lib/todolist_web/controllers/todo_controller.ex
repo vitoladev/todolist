@@ -3,6 +3,8 @@ defmodule TodolistWeb.TodoController do
 
   alias Todolist.ToDo
 
+  action_fallback TodolistWeb.FallbackController
+
   def create(conn, params) do
     with {:ok, %ToDo{} = todo} <- Todolist.create_todo(params) do
       conn
@@ -16,5 +18,11 @@ defmodule TodolistWeb.TodoController do
 
     conn
     |> render("get_all.json", todos: todos)
+  end
+
+  def get_by_id(conn, %{"id" => id}) do
+    todo = Todolist.get_by_id(id)
+
+    conn |> render("todo.json", todo: todo)
   end
 end
