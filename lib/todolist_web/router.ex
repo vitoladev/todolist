@@ -17,6 +17,7 @@ defmodule TodolistWeb.Router do
     pipe_through :api
 
     post "/todo", TodoController, :create
+    get "/todo", TodoController, :get_all
   end
 
   # Enables LiveDashboard only for development

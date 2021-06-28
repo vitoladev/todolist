@@ -10,4 +10,11 @@ defmodule TodolistWeb.TodoController do
       |> render("create.json", todo: todo)
     end
   end
+
+  def get_all(conn, _params) do
+    todos = Todolist.get_all_todos()
+
+    conn
+    |> render("get_all.json", todos: todos)
+  end
 end
