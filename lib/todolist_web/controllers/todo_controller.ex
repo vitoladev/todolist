@@ -21,15 +21,15 @@ defmodule TodolistWeb.TodoController do
   end
 
   def get_by_id(conn, %{"id" => id}) do
-    todo = Todolist.get_by_id(id)
-
-    conn |> render("todo.json", todo: todo)
+    with {:ok, %ToDo{} = todo} <- Todolist.get_by_id(id) do
+      conn |> render("todo.json", todo: todo)
+    end
   end
 
   def finish(conn, %{"id" => id}) do
-    finished_todo = Todolist.finish_todo(id)
-
-    conn |> render("todo.json", todo: finished_todo)
+    with {:ok, %ToDo{} = todo} <- Todolist.finish_todo(id) do
+      conn |> render("todo.json", todo: todo)
+    end
   end
 
   def delete(conn, %{"id" => id}) do

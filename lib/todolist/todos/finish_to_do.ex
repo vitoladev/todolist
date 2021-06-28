@@ -6,6 +6,6 @@ defmodule Todolist.ToDos.Finish do
       Repo.get!(ToDo, id)
       |> Ecto.Changeset.change(is_done: true)
 
-    Repo.update!(todo)
+    Repo.update(todo)
   end
 end
