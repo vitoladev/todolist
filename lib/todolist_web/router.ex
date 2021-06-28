@@ -19,6 +19,7 @@ defmodule TodolistWeb.Router do
     post "/todo", TodoController, :create
     get "/todo", TodoController, :get_all
     get "/todo/:id", TodoController, :get_by_id
+    put "/todo/finish/:id", TodoController, :finish
   end
 
   # Enables LiveDashboard only for development

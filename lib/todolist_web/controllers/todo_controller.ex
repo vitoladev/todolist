@@ -25,4 +25,10 @@ defmodule TodolistWeb.TodoController do
 
     conn |> render("todo.json", todo: todo)
   end
+
+  def finish(conn, %{"id" => id}) do
+    finished_todo = Todolist.finish_todo(id)
+
+    conn |> render("todo.json", todo: finished_todo)
+  end
 end
