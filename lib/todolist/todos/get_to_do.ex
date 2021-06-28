@@ -6,6 +6,6 @@ defmodule Todolist.ToDos.Get do
   end
 
   def get_by_id(id) do
-    Repo.get(User, id)
+    Repo.get(ToDo, id)
   end
 end
