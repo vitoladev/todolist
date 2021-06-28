@@ -31,4 +31,12 @@ defmodule TodolistWeb.TodoController do
 
     conn |> render("todo.json", todo: finished_todo)
   end
+
+  def delete(conn, %{"id" => id}) do
+    todo = Todolist.get_by_id(id)
+
+    with {:ok, %ToDo{}} <- Todolist.delete_todo(todo) do
+      conn |> send_resp(:no_content, "")
+    end
+  end
 end

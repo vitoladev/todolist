@@ -20,6 +20,7 @@ defmodule TodolistWeb.Router do
     get "/todo", TodoController, :get_all
     get "/todo/:id", TodoController, :get_by_id
     put "/todo/finish/:id", TodoController, :finish
+    delete "/todo/:id", TodoController, :delete
   end
 
   # Enables LiveDashboard only for development
